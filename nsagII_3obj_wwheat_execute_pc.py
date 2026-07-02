@@ -342,44 +342,21 @@ if __name__ == "__main__":
     years_calibration = [_ for _ in range(2014,2023) if _ != 2012]
     #calibration + validation years
     years_all = [_ for _ in range(2008,2023) if _ != 2012]
-    
+    year_classes = ['normal', 'wet', 'dry']
     #parameters to change
-    parameters_names = ['EmrTSUM_normal','DSRate1_normal', 'DSRate2_normal', #devel
-                        'Fm_normal','Qeff_normal',  #photosynthesis
-                        'SPLAI_normal', #canopy 
-                        "PenPar1_normal", "PenPar2_normal", #root 
-                        'fRoot_emr_normal','fRoot_elong_normal', 'fLeaf_emr_normal', 'fLeaf_elong_normal', 'fLeaf_flag_normal', #partition
-                        'E_leaf_normal','r_Sorg_normal', 'LfDR_anthesis_normal', 'LfDR_fill_normal', #Production
-                        "nfkthres_normal", #irrigation
-                        
-                        'EmrTSUM_wet','DSRate1_wet', 'DSRate2_wet', #devel
-                        'Fm_wet','Qeff_wet',  #photosynthesis
-                        'SPLAI_wet', #canopy 
-                        "PenPar1_wet", "PenPar2_wet", #root 
-                        'fRoot_emr_wet','fRoot_elong_wet', 'fLeaf_emr_wet', 'fLeaf_elong_wet', 'fLeaf_flag_wet', #partition
-                        'E_leaf_wet','r_Sorg_wet', 'LfDR_anthesis_wet', 'LfDR_fill_wet', #Production
-                        "nfkthres_wet", #irrigation
-
-
-                        'EmrTSUM_dry','DSRate1_dry', 'DSRate2_dry', #devel
-                        'Fm_dry','Qeff_dry',  #photosynthesis
-                        'SPLAI_dry', #canopy 
-                        "PenPar1_dry", "PenPar2_dry", #root 
-                        'fRoot_emr_dry','fRoot_elong_dry', 'fLeaf_emr_dry', 'fLeaf_elong_dry', 'fLeaf_flag_dry', #partition
-                        'E_leaf_dry','r_Sorg_dry', 'LfDR_anthesis_dry', 'LfDR_fill_dry', #Production
-                        "nfkthres_dry"] #irrigation
-                        
-                        
-                        
-    #lb, ub
-    parameter_bounds = np.array([[80, 0.0208, 0.02, 4, 0.04, 0.0176, 0.1,   0, 0.45, 0.405,0.648,0.522,0.477,0.67,0.01, 0.0216,0.052, 40,
-                                  80, 0.0208, 0.02, 4, 0.04, 0.0176, 0.1,   0, 0.45, 0.405,0.648,0.522,0.477,0.67,0.01, 0.0216,0.052, 40,
-                                  80, 0.0208, 0.02, 4, 0.04, 0.0176, 0.1,   0, 0.45, 0.405,0.648,0.522,0.477,0.67,0.01, 0.0216,0.052, 40],
-                                 
-                                 
-                                 [120, 0.0312, 0.03, 6, 0.06, 0.0264, 0.225, 5, 0.55, 0.495,0.792,0.638,0.583,0.72,0.02, 0.0324,0.078, 60,
-                                  120, 0.0312, 0.03, 6, 0.06, 0.0264, 0.225, 5, 0.55, 0.495,0.792,0.638,0.583,0.72,0.02, 0.0324,0.078, 60,
-                                  120, 0.0312, 0.03, 6, 0.06, 0.0264, 0.225, 5, 0.55, 0.495,0.792,0.638,0.583,0.72,0.02, 0.0324,0.078, 60 ]])
+    parameter_names_single = ['EmrTSUM','DSRate1', 'DSRate2', #devel
+                        'Fm','Qeff',  #photosynthesis
+                        'SPLAI', #canopy 
+                        "PenPar1", "PenPar2", #root 
+                        'fRoot_emr','fRoot_elong', 'fLeaf_emr', 'fLeaf_elong', 'fLeaf_flag', #partition
+                        'E_leaf','r_Sorg', 'LfDR_anthesis', 'LfDR_fill', #Production
+                        "nfkthres"] #irrigation
+    parameters_lower_bounds = [ 80, 0.0208, 0.02, 4, 0.04, 0.0176, 0.1,   0, 0.45, 0.405,0.648,0.522,0.477,0.67,0.01, 0.0216,0.052, 40]
+    parameters_upper_bounds = [120, 0.0312, 0.03, 6, 0.06, 0.0264, 0.225, 5, 0.55, 0.495,0.792,0.638,0.583,0.72,0.02, 0.0324,0.078, 60]
+    
+    #creates parameter names and parameter ranges for normal, wet, and dry year. 
+    parameters_names = [i + '_' + j for j in year_classes for i in parameter_names_single] #this assumes that all parameters are time variant
+    parameter_bounds = np.array([parameters_lower_bounds * len(year_classes), parameters_upper_bounds * len(year_classes)])
     
     
     #objective functions used in nsga, name only for ease access, these objfs are hardcoded in the read_n_eval function
@@ -402,7 +379,7 @@ if __name__ == "__main__":
     termination = get_termination("n_gen", 40)
     
     #execute the nsga for 5 times at different random initializations
-    for i in range(3):
+    for i in range(5):
         print(i)
         #initialize nsga at random location in parameter space
         random_seed = int(time.time())
@@ -442,4 +419,4 @@ if __name__ == "__main__":
         execute_pareto(main_dir, res_path, pareto_param_save_path, parameter_names,
                        observed_yield_irr_path, observed_sm_30_60_path, years_all, NSGA = False)
         plot_pareto_simulation_outputs(res_path, observed_yield_irr_path, observed_sm_30_60_path, years_all, NSGA = False)
-        break
+        # break
