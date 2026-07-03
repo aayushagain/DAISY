@@ -51,7 +51,7 @@ Due to this reason, despite the above conclusions, time-variant parameter was ad
 <figure>
   <img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/ba054bc3-e33e-4534-a48b-a90ec51c7d33" />
   <br>
-  <figcaption><em>Fig.5. Final pareto front of Winter Wheat after integrating 5 NSGA-II runs. The comparison is made with irrigation here. The bias in irrigation during validation period is possibly because the groundwater abstraction rule for irrigation was not implemented in the model. Reduced irrigation after 2018 drought was hence not factored in. </em></figcaption>
+  <figcaption><em>Fig.6. Final pareto front of Winter Wheat after integrating 5 NSGA-II runs. The comparison is made with irrigation here. The bias in irrigation during validation period is possibly because the groundwater abstraction rule for irrigation was not implemented in the model. Reduced irrigation after 2018 drought was hence not factored in. </em></figcaption>
 </figure>
 <br><br>
 
@@ -60,7 +60,7 @@ Auto-irrigation rule obtained from the final pareto front were comparable to fie
 <figure>
   <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/99f867be-0a8e-436d-9dc5-27517de51f5b" />
   <br>
-  <figcaption><em>Fig.5. Distribution of irrigation thresholds for different weather types. Irrigation threshold was calculated as % drop in net field capacity(nFK). For optimal irrigaiton, irrigation is triggered when nFK drops to 50%. </em></figcaption>
+  <figcaption><em>Fig.7. Distribution of irrigation thresholds for different weather types. Irrigation threshold was calculated as % drop in net field capacity(nFK). For optimal irrigaiton, irrigation is triggered when nFK drops to 50%. </em></figcaption>
 </figure>
 
 <br><br>
