@@ -58,9 +58,9 @@ Due to this reason, despite the above conclusions, time-variant parameter was ad
 **D. Auto-irrigation rule** <br>
 Auto-irrigation rule obtained from the final pareto front were comparable to field regulation. 
 <figure>
-  <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/99f867be-0a8e-436d-9dc5-27517de51f5b" />
+  <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/be23aba7-f3b4-47a7-973c-07eeff8eddec" />
   <br>
-  <figcaption><em>Fig.7. Distribution of irrigation thresholds for different weather types. Irrigation threshold was calculated as % drop in net field capacity(nFK). For optimal irrigaiton, irrigation is triggered when nFK drops to 50%. </em></figcaption>
+  <figcaption><em>Fig.7. Distribution of irrigation thresholds for Sugar Beet for different weather types. Irrigation threshold was calculated as % drop in net field capacity(nFK). For optimal irrigaiton, irrigation is triggered when nFK drops to 50%. </em></figcaption>
 </figure>
 
 <br><br>
